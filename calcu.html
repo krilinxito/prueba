@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script>
+        function Calculadora() {
+            var x = parseInt(document.form.elements["x"].value);
+            var y = parseInt(document.form.elements["y"].value);
+            var n = parseInt(document.form.elements["n"].value);
+
+            document.form.elements["suma"].value = x + y;
+            document.form.elements["resta"].value = x - y;
+            document.form.elements["producto"].value = x * y;
+            document.form.elements["division"].value =(x / y);
+            document.form.elements["modulo"].value = x % y;
+            document.form.elements["fx"].value = factorial(x);
+            document.form.elements["fy"].value = factorial(y);
+            document.form.elements["fibo"].value = fibo(n);
+        }
+
+        function factorial(n) {
+            var fac=1;
+            for (let index = 1; index <= n; index++) {
+                fac = fac*index;
+            }
+            return fac;
+        }
+        function fibo(n) {
+            var a = 0, b = 1, s;
+            var fibSequence = [a, b];
+            for (let index = 2; index < n; index++) {
+                s = a + b;
+                a = b;
+                b = s;
+                fibSequence.push(s);
+            }
+            return fibSequence.slice(0, n).join(", ");
+        }
+    </script>
+</head>
+<body>
+    <form action="" name="form">
+        <center>
+        <table width="70%" border="1" align="center">
+        <tr id="ingreso">
+            <td><label for="x">X:</label><input type="text" name="x" oninput="Calculadora()"></td>
+            <td><label for="y">Y:</label><input type="text" name="y" oninput="Calculadora()"></td>
+        </tr>
+        <tr id="suma">
+            <td>SUMA</td>
+            <td><input type="text" name="suma" readonly></td>
+        </tr>
+        <tr id="resta">
+            <td>RESTA</td>
+            <td><input type="text" name="resta" readonly></td>
+        </tr>
+        <tr id="producto">
+            <td>PRODUCTO</td>
+            <td><input type="text" name="producto" readonly></td>
+        </tr>
+        <tr id="division">
+            <td>DIVISION</td>
+            <td><input type="text" name="division" readonly></td>
+        </tr>
+        <tr id="modulo">
+            <td>MODULO</td>
+            <td><input type="text" name="modulo" readonly></td>
+        </tr>
+        <tr id="factorial">
+            <td><label for="fx">Fact X</label><input type="text" name="fx" readonly></td>
+            <td><label for="fy">Fact Y</label><input type="text" name="fy" readonly></td>
+        </tr>
+        <tr>
+            <td><label for="form">FIBO:</label><input type="text" name="n" oninput="Calculadora()"></td>
+            <td><input type="text" name="fibo" readonly></td>
+        </tr>
+        </table>
+        <input type="button" value="Calcular" onclick="Calculadora()">
+    </center>
+    </form>
+</body>
+</html>
